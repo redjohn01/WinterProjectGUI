@@ -95,14 +95,17 @@ public class ChooseMenu extends JFrame {
 		contentPane.add(btContractor);
 		
 		btSale = new JButton("Sale Menu");
+		
 		btSale.setBounds(212, 210, 158, 36);
 		contentPane.add(btSale);
 		
 		btLeasing = new JButton("Leasing Menu");
+		
 		btLeasing.setBounds(212, 259, 158, 36);
 		contentPane.add(btLeasing);
 		
 		btExit = new JButton("Exit Program");
+		
 		btExit.setBounds(212, 308, 158, 36);
 		contentPane.add(btExit);
 	}
@@ -127,5 +130,20 @@ public class ChooseMenu extends JFrame {
 			}
 		});
 		
+		btSale.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SaleMenu saleMenu = new SaleMenu();
+				dispose();
+				saleMenu.main(null);
+			}
+		});
+		
+		btLeasing.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LeasingMenu lMenu = new LeasingMenu();
+				dispose();
+				lMenu.main(null);
+			}
+		});
 	}
 }
