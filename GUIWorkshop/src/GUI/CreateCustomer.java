@@ -145,26 +145,32 @@ public class CreateCustomer extends JFrame {
 					String phone = textField_4.getText();
 					String city = textField_5.getText();
 					
-					InputChecker.verifyId(1);
+					/*InputChecker.verifyId(1);
 					InputChecker.verifyName();
 					InputChecker.verifyAddress();
 					InputChecker.verifyEmail();
 					InputChecker.verifyPhone();
-					InputChecker.verifyCity();
-					
-					if(customerControler.createCustomer(cpr, name, address, email, phone, city)) {
-						JOptionPane.showMessageDialog(null, "Operation finished with success.");
-						textField.setText("");
-						textField_1.setText("");
-						textField_2.setText("");
-						textField_3.setText("");
-						textField_4.setText("");
-						textField_5.setText("");
-
+					InputChecker.verifyCity();*/
+					if((cpr.equals("") || name.equals("") || address.equals("") || email.equals("") || phone.equals("") || city.equals("")) ) {
+						JOptionPane.showMessageDialog(null, "You need to fill all the fields!");
 					}
 					else {
-						JOptionPane.showMessageDialog(null, "Operation failed.");
+						if(customerControler.createCustomer(cpr, name, address, email, phone, city)) {
+							JOptionPane.showMessageDialog(null, "Operation finished with success.");
+							textField.setText("");
+							textField_1.setText("");
+							textField_2.setText("");
+							textField_3.setText("");
+							textField_4.setText("");
+							textField_5.setText("");
+
+						}
+						else {
+							JOptionPane.showMessageDialog(null, "Operation failed.");
+						}
 					}
+					//customerControler.createCustomer(cpr, name, address, email, phone, city);
+										
 				} catch(Exception ex) {
 					JOptionPane.showMessageDialog(null, "Operation failed.");
 				}

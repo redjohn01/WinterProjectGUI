@@ -57,6 +57,7 @@ public class CustomerMenu extends JFrame {
 		contentPane.add(btnCreateCustomer);
 		
 		btnReadCustomer = new JButton("Read Customer");
+		
 		btnReadCustomer.setBounds(193, 101, 134, 37);
 		contentPane.add(btnReadCustomer);
 		
@@ -96,6 +97,14 @@ public class CustomerMenu extends JFrame {
 				ChooseMenu chMenu = new ChooseMenu();
 				dispose();
 				chMenu.main(null);
+			}
+		});
+		
+		btnReadCustomer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ReadCustomer readCustomer = new ReadCustomer();
+				dispose();
+				readCustomer.main(null);
 			}
 		});
 	}

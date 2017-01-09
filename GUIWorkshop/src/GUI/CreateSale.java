@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import ControlLayer.SaleControl;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -23,6 +26,7 @@ public class CreateSale extends JFrame {
 	private JButton btnBack;
 	private JTextField textFieldQuantity;
 	private JLabel lblQuantity;
+	private JButton btnSubmit;
 
 	/**
 	 * Launch the application.
@@ -70,9 +74,9 @@ public class CreateSale extends JFrame {
 		lblSaleNumberId.setBounds(131, 163, 103, 26);
 		contentPane.add(lblSaleNumberId);
 		
-		JLabel lblUserCprcvr = new JLabel("User CPR/CVR");
-		lblUserCprcvr.setBounds(131, 199, 103, 26);
-		contentPane.add(lblUserCprcvr);
+		JLabel lblUserCpr = new JLabel("User CPR/CVR");
+		lblUserCpr.setBounds(131, 199, 103, 26);
+		contentPane.add(lblUserCpr);
 		
 		textFieldPlace = new JTextField();
 		textFieldPlace.setBounds(271, 62, 116, 22);
@@ -94,17 +98,8 @@ public class CreateSale extends JFrame {
 		textFieldCPR.setBounds(271, 201, 116, 22);
 		contentPane.add(textFieldCPR);
 		
-		JButton btnSubmit = new JButton("Submit");
-		btnSubmit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				try{
-					String place = textFieldPlace.getText();
-					
-				} catch(Exception ex) {
-					JOptionPane.showMessageDialog(null, "Operation failed.");
-				}
-			}
-		});
+		btnSubmit = new JButton("Submit");
+		
 		btnSubmit.setBounds(385, 272, 97, 25);
 		contentPane.add(btnSubmit);
 		
@@ -130,6 +125,24 @@ public class CreateSale extends JFrame {
 				SaleMenu saleMenu = new SaleMenu();
 				dispose();
 				saleMenu.main(null);
+			}
+		});
+		
+		btnSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try{
+					SaleControl saleControl = new SaleControl();
+					
+					String place = textFieldPlace.getText();
+					String barcode = textFieldBarcode.getText();
+					int quantity = Integer.parseInt(textFieldQuantity.getText());
+					String numberID = textFieldIDNum.getText();
+					String cpr = textFieldCPR.getText();
+					
+					
+				} catch(Exception ex) {
+					JOptionPane.showMessageDialog(null, "Operation failed.");
+				}
 			}
 		});
 	}
