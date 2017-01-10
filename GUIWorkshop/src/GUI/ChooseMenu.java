@@ -86,7 +86,6 @@ public class ChooseMenu extends JFrame {
 		
 		btItem = new JButton("Item Menu");
 		
-		
 		btItem.setBounds(212, 113, 158, 36);
 		contentPane.add(btItem);
 		
@@ -143,6 +142,14 @@ public class ChooseMenu extends JFrame {
 				LeasingMenu lMenu = new LeasingMenu();
 				dispose();
 				lMenu.main(null);
+			}
+		});
+		
+		btItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ItemMenu itemMenu = new ItemMenu();
+				dispose();
+				itemMenu.main(null);
 			}
 		});
 	}

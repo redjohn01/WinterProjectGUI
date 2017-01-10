@@ -6,14 +6,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import ControlLayer.SaleControl;
+
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 public class ReadSale extends JFrame {
 
@@ -88,6 +94,7 @@ public class ReadSale extends JFrame {
 		contentPane.add(textFieldCustomer);
 		
 		btnSearch = new JButton("Search");
+		
 		btnSearch.setBounds(31, 124, 97, 25);
 		contentPane.add(btnSearch);
 		
@@ -106,6 +113,10 @@ public class ReadSale extends JFrame {
 		JLabel lblResults = new JLabel("Results");
 		lblResults.setBounds(376, 69, 56, 16);
 		contentPane.add(lblResults);
+		
+		JList list = new JList();
+		list.setBounds(158, 257, -80, -37);
+		contentPane.add(list);
 	}
 
 	private void createEvents() {
@@ -115,6 +126,24 @@ public class ReadSale extends JFrame {
 				SaleMenu saleMenu = new SaleMenu();
 				dispose();
 				saleMenu.main(null);
+			}
+		});
+		
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SaleControl saleControl = new SaleControl();
+				String barcode = textFieldSearch.getText();
+				ArrayList<String> readResult = saleControl.readSale(barcode);
+				
+				if(readResult != null) {
+					textFieldID.setText(readResult.get(0).substring(12));
+					textFieldPrice.setText(readResult.get(9));
+					textFieldCustomer.setText(readResult.get(12) + " -CPR");
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Sorry, there is no such sale!");
+				}
+				
 			}
 		});
 	}

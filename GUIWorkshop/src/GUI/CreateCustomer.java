@@ -16,6 +16,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JList;
+import javax.swing.JSeparator;
 
 public class CreateCustomer extends JFrame {
 
@@ -152,7 +154,7 @@ public class CreateCustomer extends JFrame {
 					InputChecker.verifyPhone();
 					InputChecker.verifyCity();*/
 					if((cpr.equals("") || name.equals("") || address.equals("") || email.equals("") || phone.equals("") || city.equals("")) ) {
-						JOptionPane.showMessageDialog(null, "You need to fill all the fields!");
+						JOptionPane.showMessageDialog(null, "You need to fill out all the fields!");
 					}
 					else {
 						if(customerControler.createCustomer(cpr, name, address, email, phone, city)) {

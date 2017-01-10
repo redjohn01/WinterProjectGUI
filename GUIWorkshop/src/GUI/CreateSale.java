@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.awt.event.ActionEvent;
 
 public class CreateSale extends JFrame {
@@ -133,11 +134,26 @@ public class CreateSale extends JFrame {
 				try{
 					SaleControl saleControl = new SaleControl();
 					
-					String place = textFieldPlace.getText();
+					String place = textFieldPlace.getText().toLowerCase();
 					String barcode = textFieldBarcode.getText();
 					int quantity = Integer.parseInt(textFieldQuantity.getText());
 					String numberID = textFieldIDNum.getText();
 					String cpr = textFieldCPR.getText();
+					
+					HashMap<String,Integer> map = new HashMap<>();
+					map.put(barcode, quantity);
+					
+					if(saleControl.getAvailableItems(place, map, numberID, cpr)) {
+						JOptionPane.showMessageDialog(null, "Operation finished with success.");
+						textFieldPlace.setText("");
+						textFieldBarcode.setText("");
+						textFieldIDNum.setText("");
+						textFieldCPR.setText("");
+						textFieldQuantity.setText("");
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "Operation failed.");
+					}
 					
 					
 				} catch(Exception ex) {
