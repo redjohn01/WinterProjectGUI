@@ -4,8 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import ControlLayer.Brexit;
+
 import java.awt.Toolkit;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -19,6 +23,7 @@ public class SaleMenu extends JFrame {
 	private JButton btnReadSale;
 	private JButton btnEditSale;
 	private JButton btnPreviousMenu;
+	private JButton btnExitProgram;
 
 	/**
 	 * Launch the application.
@@ -77,7 +82,9 @@ public class SaleMenu extends JFrame {
 		btnPreviousMenu.setBounds(189, 207, 123, 36);
 		contentPane.add(btnPreviousMenu);
 		
-		JButton btnExitProgram = new JButton("Exit Program");
+		btnExitProgram = new JButton("Exit Program");
+		
+		
 		btnExitProgram.setBounds(189, 256, 123, 36);
 		contentPane.add(btnExitProgram);
 		
@@ -126,6 +133,17 @@ public class SaleMenu extends JFrame {
 				ChooseMenu chMenu = new ChooseMenu();
 				dispose();
 				chMenu.main(null);
+			}
+		});
+		
+		btnExitProgram.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit the program?");
+				if(confirm == JOptionPane.YES_OPTION) {
+					Brexit brexit = new Brexit();
+					brexit.exit();
+					System.exit(0);
+				}
 			}
 		});
 	}

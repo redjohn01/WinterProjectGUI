@@ -35,15 +35,16 @@ public class LoginMenu {
 	private JPasswordField pwdPassword;
 	private JMenuItem mbiExit;
 	private JButton btnLogin;
-
+	static Brexit brexit = new Brexit();
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				AesEncrypter.setKey("EncryptingPassword123");
+				brexit.load();
 				try {
-					AesEncrypter.setKey("EncryptingPassword123");
 					LoginMenu window = new LoginMenu();
 					window.mainFrame.setVisible(true);
 				} catch (Exception e) {
@@ -145,7 +146,6 @@ public class LoginMenu {
 			public void actionPerformed(ActionEvent arg0) {
 				int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit the program?");
 				if(confirm == JOptionPane.YES_OPTION) {
-					Brexit brexit = new Brexit();
 					brexit.exit();
 					System.exit(0);
 				}
