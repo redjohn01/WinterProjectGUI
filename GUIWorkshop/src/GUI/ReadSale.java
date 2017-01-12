@@ -137,8 +137,8 @@ public class ReadSale extends JFrame {
 				
 				if(readResult != null) {
 					textFieldID.setText(readResult.get(0).substring(12));
-					textFieldPrice.setText(readResult.get(9));
-					textFieldCustomer.setText(readResult.get(12) + " -CPR");
+					textFieldPrice.setText(readResult.get(1).substring(9));
+					textFieldCustomer.setText(readResult.get(2).substring(12) + " -CPR");
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Sorry, there is no such sale!");

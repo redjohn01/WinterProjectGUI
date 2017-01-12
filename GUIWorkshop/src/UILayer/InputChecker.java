@@ -4,15 +4,18 @@ import ControlLayer.ItemControl;
 
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import static UILayer.ErrorCode.*;
 
 /**
  * Created by EU on 2016-12-01.
  */
 public class InputChecker {
-    private static String id, name, address, email, phone, city, workId, numberID, barcode, type, place; // not ready yet.
-    private static int quantity, periodOfTime;
-    private static double price, costPrice, tradeAllowance, retailPrice;
+    //private static String id ,name ,address,phone, city, workId, numberID, barcode, type, place; // not ready yet.
+    //private static int quantity, periodOfTime;
+    //private static double price, costPrice, tradeAllowance, retailPrice;
     private static boolean ok;
     public static ItemControl itemControl = new ItemControl();
     ;
@@ -33,15 +36,16 @@ public class InputChecker {
         return instance;
     }
 
-    public static String verifyId(int check) {
-        id = null; // making sure it is empty before starting the process
+    public static String verifyId(int check, String input) {
+        //id = null; // making sure it is empty before starting the process
         do {
             //System.out.println("Please input user's CPR/CVR.");
             ok = true;
-            id = Input.readString();
-            if (id.length() != 10 || (!id.matches("[0-9]+"))) { // checking if the ID(CPR/CVR) is correct from a logical point of view(10 numbers and no characters)
+            //id = Input.readString();
+            if (input.length() != 10 || (!input.matches("[0-9]+"))) { // checking if the ID(CPR/CVR) is correct from a logical point of view(10 numbers and no characters)
                 ok = false;
                 ErrorCode.print(WRONG_CPR_INPUT);
+                //return "Wrong CPR/CVR , must be at least 10";
             }
 
 
@@ -51,9 +55,10 @@ public class InputChecker {
                     if (check == 3) //if you want to delete one customer/contractor
                         existingIds.remove(i); // remove his CPR/CVR from the system
 
-                    if (existingIds.get(i).equals(id) && check == 1) {
+                    if (existingIds.get(i).equals(input) && check == 1) {
                         ok = false;
                         ErrorCode.print(ID_ALREADY_EXISTS);
+                       // return "Id already exist";
                     }
                 }
             }
@@ -61,18 +66,18 @@ public class InputChecker {
         } while (!ok);
 
         if (check == 1)
-            existingIds.add(id); // adding the unique id to the system
+            existingIds.add(input); // adding the unique id to the system
 
 
-        return id;
+        return input;
     }
 
-    public static String verifyName() {
-        name = null;    // making sure it is empty before starting the process
+    public static String verifyName(String name) {
+        //name = null;    // making sure it is empty before starting the process
         do {
-            System.out.println("Please input the name.");
+            //System.out.println("Please input the name.");
             ok = true;
-            name = Input.readString();
+            //name = Input.readString();
             if (name.length() <= 3) {
                 ok = false;
                 ErrorCode.print(WRONG_NAME_INPUT);
@@ -82,13 +87,13 @@ public class InputChecker {
         return name;
     }
 
-    public static String verifyAddress() {
-        address = null; // making sure it is empty before starting the process
+    public static String verifyAddress(String address) {
+        //address = null; // making sure it is empty before starting the process
 
         do {
-            System.out.println("Please input the address.");
+            //System.out.println("Please input the address.");
             ok = true;
-            address = Input.readString();
+            //address = Input.readString();
             if (!address.matches(".*\\d+.*") || address.length() < 3) //checks if there is at least one number in the string
             {
                 ok = false;
@@ -99,12 +104,12 @@ public class InputChecker {
         return address;
     }
 
-    public static String verifyEmail() {
+    public static String verifyEmail(String email) {
         do {
-            System.out.println("Please input user's email.");
-            email = null; // making sure it is empty before starting the process
+            //System.out.println("Please input user's email.");
+            //email = null; // making sure it is empty before starting the process
             ok = true;
-            email = Input.readString();
+            //email = Input.readString();
             if (!(email.toLowerCase().contains("@") && email.toLowerCase().contains(".")) || email.length() < 5) // checks if email is at least 5 characters and contains @ and .
             {
                 ok = false;
@@ -115,13 +120,13 @@ public class InputChecker {
         return email;
     }
 
-    public static String verifyPhone() {
-        phone = null; // making sure it is empty before starting the process
+    public static String verifyPhone(String phone) {
+        //phone = null; // making sure it is empty before starting the process
 
         do {
-            System.out.println("Please input the phone number.");
+            //System.out.println("Please input the phone number.");
             ok = true;
-            phone = Input.readString();
+            //phone = Input.readString();
             if (!phone.matches("[0-9]+")) //checks if string is composed only of numbers
             {
                 ok = false;
@@ -137,13 +142,13 @@ public class InputChecker {
         return phone;
     }
 
-    public static int verifyFieldNumber(int index) {
-        int inputIndex; //
+    public static int verifyFieldNumber(int index,int inputIndex) {
+        //int inputIndex; //
 
         do {
-            System.out.println("Please input the field's number.");
+            //System.out.println("Please input the field's number.");
             ok = true;
-            inputIndex = Input.readInt();
+            //inputIndex = Input.readInt();
             if (inputIndex > index) {
                 ok = false;
                 ErrorCode.print(WRONG_INT_INPUT);
@@ -153,13 +158,13 @@ public class InputChecker {
         return inputIndex;
     }
 
-    public static String verifyCity() {
-        city = null; // making sure it is empty before starting the process
+    public static String verifyCity(String city) {
+        //city = null; // making sure it is empty before starting the process
 
         do {
-            System.out.println("Please input the city.");
+            //System.out.println("Please input the city.");
             ok = true;
-            city = Input.readString();
+            //city = Input.readString();
             if (city.length() < 3) {
                 ok = false;
                 ErrorCode.print(WRONG_CITY_INPUT);
@@ -169,13 +174,13 @@ public class InputChecker {
         return city;
     }
 
-    public static String verifyWorkId(int check) {
-        workId = null; // making sure it is empty before starting the process
+    public static String verifyWorkId(int check, String workId) {
+        //workId = null; // making sure it is empty before starting the process
 
         do {
-            System.out.println("Please input the worker's identification number.");
+            //System.out.println("Please input the worker's identification number.");
             ok = true;
-            workId = Input.readString();
+            //workId = Input.readString();
             if (workId.length() != 6 || (!workId.matches("[0-9]+"))) // checking if
             {
                 ok = false;
@@ -202,13 +207,13 @@ public class InputChecker {
         return workId;
     }
 
-    public static String verifySaleNumberID() {
-        numberID = null; // make sure it is empty before starting the process
+    public static String verifySaleNumberID(String numberID) {
+        //numberID = null; // make sure it is empty before starting the process
 
         do {
-            System.out.println("Please input the identification number.");
+            //System.out.println("Please input the identification number.");
             ok = true;
-            numberID = Input.readString();
+           // numberID = Input.readString();
             if (numberID.length() <= 4 || (!numberID.matches("[0-9]+"))) {
                 ok = false;
                 ErrorCode.print(WRONG_SALE_OR_LOAN_NUMBERID);
@@ -225,13 +230,13 @@ public class InputChecker {
         return numberID;
     }
 
-    public static int verifyQuantity() {
-        quantity = 0; // make sure it is empty before starting the process
+    public static int verifyQuantity(int quantity) {
+        //quantity = 0; // make sure it is empty before starting the process
 
         do {
-            System.out.println("Please input the quantity.");
+            //System.out.println("Please input the quantity.");
             ok = true;
-            quantity = Input.readInt();
+            //quantity = Input.readInt();
             if (quantity <= 0) {
                 ok = false;
                 ErrorCode.print(WRONG_QUANTITY);
@@ -241,13 +246,13 @@ public class InputChecker {
         return quantity;
     }
 
-    public static double verifyPrice() {
-        price = 0; // make sure it is empty before starting the process
+    public static double verifyPrice(double price) {
+        //price = 0; // make sure it is empty before starting the process
 
         do {
-            System.out.println("Please input the current price.");
+            //System.out.println("Please input the current price.");
             ok = true;
-            price = Input.readInt();
+            //price = Input.readInt();
             if (price <= 0) {
                 ok = false;
                 ErrorCode.print(WRONG_PRICE);
@@ -257,13 +262,13 @@ public class InputChecker {
         return price;
     }
 
-    public static int verifyPeriod() {
-        periodOfTime = 0; // make sure it is empty before starting the process
+    public static int verifyPeriod(int periodOfTime) {
+        //periodOfTime = 0; // make sure it is empty before starting the process
 
         do {
-            System.out.println("Please input the period of time,in days.");
+            //System.out.println("Please input the period of time,in days.");
             ok = true;
-            periodOfTime = Input.readInt();
+            //periodOfTime = Input.readInt();
             if (periodOfTime <= 0) {
                 ok = false;
                 ErrorCode.print(WRONG_PERIOD);
@@ -273,27 +278,28 @@ public class InputChecker {
         return periodOfTime;
     }
 
-    public static String verifyItemBarcode() {
-        System.out.println("Type done if there is no barcode to be inputted.");
+    public static String verifyItemBarcode(String barcode) {
+        //System.out.println("Type done if there is no barcode to be inputted.");
         do {
-            System.out.println("Please input item's barcode. ");
+            //System.out.println("Please input item's barcode. ");
 
             ok = true;
-            barcode = Input.readString().toLowerCase();
+            //barcode = Input.readString().toLowerCase();
             if (barcode.length() < 4) {
                 ok = false;
+                ErrorCode.print(WRONG_BARCODE);
             }
 
         } while (!ok);
         return barcode;
     }
 
-    public static int getQuantityAtPlace(String place, String barcode) {
+    public static int getQuantityAtPlace(String place, String barcode, int quantity) {
         int availableQuantity = itemControl.getQuantityAtPlace(place, barcode);
         do {
-            System.out.println("Please input a quantity that is lesser or equal to " + availableQuantity + ".");
+            //System.out.println("Please input a quantity that is lesser or equal to " + availableQuantity + ".");
             ok = true;
-            quantity = Input.readInt();
+            //quantity = Input.readInt();
             if (quantity > availableQuantity) {
                 ok = false;
                 ErrorCode.print(WRONG_QUANTITY);
@@ -301,18 +307,22 @@ public class InputChecker {
         } while (!ok);
 
         return quantity;
-
+    }
+    
+    public static int returnQuantityAtPlace(String place, String barcode) {
+        int availableQuantity = itemControl.getQuantityAtPlace(place, barcode);
+        return availableQuantity;
     }
 
-    public static double verifyCostPrice()
+    public static double verifyCostPrice(double costPrice)
 
     {
-        costPrice = 0; // make sure it is empty before starting the process
+        //costPrice = 0; // make sure it is empty before starting the process
 
         do {
-            System.out.println("Please input item's cost price. ");
+            //System.out.println("Please input item's cost price. ");
             ok = true;
-            costPrice = Input.readInt();
+            //costPrice = Input.readInt();
             if (costPrice <= 0) {
                 ok = false;
                 ErrorCode.print(WRONG_PRICE);
@@ -322,15 +332,15 @@ public class InputChecker {
         return (double) costPrice;
     }
 
-    public static double verifyTradeAllowance()
+    public static double verifyTradeAllowance(double tradeAllowance)
 
     {
-        tradeAllowance = 0; // make sure it is empty before starting the process
+        //tradeAllowance = 0; // make sure it is empty before starting the process
 
         do {
-            System.out.println("Please input item's trade allowance price. ");
+            //System.out.println("Please input item's trade allowance price. ");
             ok = true;
-            tradeAllowance = Input.readInt();
+            //tradeAllowance = Input.readInt();
             if (tradeAllowance < 0) {
                 ok = false;
                 ErrorCode.print(WRONG_PRICE);
@@ -341,13 +351,13 @@ public class InputChecker {
 
     }
 
-    public static double verifyRetailPrice() {
-        retailPrice = 0; // make sure it is empty before starting the process
+    public static double verifyRetailPrice(double retailPrice) {
+        //retailPrice = 0; // make sure it is empty before starting the process
 
         do {
-            System.out.println("Please input item's retail price. ");
+            //System.out.println("Please input item's retail price. ");
             ok = true;
-            retailPrice = Input.readInt();
+            //retailPrice = Input.readInt();
             if (retailPrice < 0) {
                 ok = false;
                 ErrorCode.print(WRONG_PRICE);
@@ -358,12 +368,12 @@ public class InputChecker {
 
     }
 
-    public static String verifyType() {
-        type = null;    // making sure it is empty before starting the process
+    public static String verifyType(String type) {
+        //type = null;    // making sure it is empty before starting the process
         do {
-            System.out.println("Please input item's type. ");
+            //System.out.println("Please input item's type. ");
             ok = true;
-            type = Input.readString();
+            //type = Input.readString();
             if (type.length() < 2) {
                 ok = false;
                 ErrorCode.print(WRONG_NAME_INPUT);
@@ -373,12 +383,12 @@ public class InputChecker {
         return type;
     }
 
-    public static String verifyPlace() {
-        place = null;    // making sure it is empty before starting the process
+    public static String verifyPlace(String place) {
+        //place = null;    // making sure it is empty before starting the process
         do {
-            System.out.println("Please input item's place, Timber or DIY.");
+            //System.out.println("Please input item's place, Timber or DIY.");
             ok = true;
-            place = Input.readString().toLowerCase();
+            //place = Input.readString().toLowerCase();
             if (!((place.equals("timber")) || (place.equals("diy")))) {
                 ok = false;
                 ErrorCode.print(WRONG_NAME_INPUT);
