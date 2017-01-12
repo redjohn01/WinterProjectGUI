@@ -31,7 +31,7 @@ public class EditSale extends JFrame {
 	private JTextField textFieldChoice;
 	private JButton btnSave;
 	SaleControl saleControl = new SaleControl();
-	String search = "";
+	private String search;
 	ArrayList<String> readResult = new ArrayList<>();
 	/**
 	 * Launch the application.
@@ -60,7 +60,7 @@ public class EditSale extends JFrame {
 	private void initializeComponents() {
 		// TODO Auto-generated method stub
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 531, 477);
+		setBounds(100, 100, 525, 458);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -82,34 +82,34 @@ public class EditSale extends JFrame {
 		
 		btnSearch = new JButton("Search");
 		
-		btnSearch.setBounds(31, 154, 97, 25);
+		btnSearch.setBounds(31, 139, 97, 25);
 		contentPane.add(btnSearch);
 		
 		textField = new JTextField();
-		textField.setBounds(311, 104, 153, 22);
+		textField.setBounds(348, 104, 153, 22);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(311, 144, 153, 22);
+		textField_1.setBounds(348, 139, 153, 22);
 		contentPane.add(textField_1);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(311, 183, 153, 22);
+		textField_2.setBounds(348, 179, 153, 22);
 		contentPane.add(textField_2);
 		
 		JLabel lblNumID = new JLabel("1.Number ID");
-		lblNumID.setBounds(206, 107, 77, 16);
+		lblNumID.setBounds(259, 107, 77, 16);
 		contentPane.add(lblNumID);
 		
 		JLabel lblPrice = new JLabel("2.Price");
-		lblPrice.setBounds(206, 147, 77, 16);
+		lblPrice.setBounds(259, 142, 77, 16);
 		contentPane.add(lblPrice);
 		
 		JLabel lblCustomer = new JLabel("3.Customer");
-		lblCustomer.setBounds(206, 186, 77, 16);
+		lblCustomer.setBounds(259, 182, 77, 16);
 		contentPane.add(lblCustomer);
 		
 		JLabel lblResults = new JLabel("Results");
@@ -118,11 +118,11 @@ public class EditSale extends JFrame {
 		
 		btnSave = new JButton("Save");
 		
-		btnSave.setBounds(404, 392, 97, 25);
+		btnSave.setBounds(404, 371, 97, 25);
 		contentPane.add(btnSave);
 		
 		textFieldObject = new JTextField();
-		textFieldObject.setBounds(358, 320, 143, 22);
+		textFieldObject.setBounds(348, 320, 153, 22);
 		contentPane.add(textFieldObject);
 		textFieldObject.setColumns(10);
 		
@@ -140,7 +140,7 @@ public class EditSale extends JFrame {
 		
 		textFieldChoice = new JTextField();
 		textFieldChoice.setColumns(10);
-		textFieldChoice.setBounds(358, 287, 143, 22);
+		textFieldChoice.setBounds(348, 287, 153, 22);
 		contentPane.add(textFieldChoice);
 		
 		JSeparator separator = new JSeparator();

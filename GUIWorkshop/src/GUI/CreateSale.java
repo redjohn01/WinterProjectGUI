@@ -182,6 +182,7 @@ public class CreateSale extends JFrame {
 					textFieldIDNum.setText("");
 					textFieldCPR.setText("");
 					textFieldQuantity.setText("");
+					textFieldAvailable.setText("");
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Operation failed.");

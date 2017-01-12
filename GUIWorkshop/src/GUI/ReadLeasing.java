@@ -7,29 +7,30 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import ControlLayer.SaleControl;
+import ControlLayer.LoanControl;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JTable;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JSeparator;
+import javax.swing.JScrollBar;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.awt.event.ActionEvent;
 
-public class ReadSale extends JFrame {
+public class ReadLeasing extends JFrame {
 
 	private JPanel contentPane;
 	private JButton btnBack;
-	private JTextField textFieldID;
 	private JTextField textFieldSearch;
+	private JTextField textFieldID;
 	private JTextField textFieldPrice;
+	private JTextField textFieldPeriod;
 	private JTextField textFieldCustomer;
 	private JButton btnSearch;
+	private JTextField textFieldStatus;
+	private JLabel lblStatus;
 
 	/**
 	 * Launch the application.
@@ -38,7 +39,7 @@ public class ReadSale extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ReadSale frame = new ReadSale();
+					ReadLeasing frame = new ReadLeasing();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +51,7 @@ public class ReadSale extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ReadSale() {
+	public ReadLeasing() {
 		initializeComponents();
 		createEvents();
 	}
@@ -58,7 +59,7 @@ public class ReadSale extends JFrame {
 	private void initializeComponents() {
 		// TODO Auto-generated method stub
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 511, 335);
+		setBounds(100, 100, 539, 332);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -69,81 +70,96 @@ public class ReadSale extends JFrame {
 		btnBack.setBounds(12, 13, 97, 25);
 		contentPane.add(btnBack);
 		
-		JLabel lblSearchById = new JLabel("Search by ID number");
-		lblSearchById.setBounds(12, 69, 129, 16);
-		contentPane.add(lblSearchById);
+		textFieldSearch = new JTextField();
+		textFieldSearch.setBounds(12, 98, 116, 22);
+		contentPane.add(textFieldSearch);
+		textFieldSearch.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("Search by ID number");
+		lblNewLabel.setBounds(12, 75, 131, 16);
+		contentPane.add(lblNewLabel);
 		
 		textFieldID = new JTextField();
-		textFieldID.setBounds(330, 105, 151, 22);
-		contentPane.add(textFieldID);
 		textFieldID.setColumns(10);
-		
-		textFieldSearch = new JTextField();
-		textFieldSearch.setColumns(10);
-		textFieldSearch.setBounds(12, 89, 116, 22);
-		contentPane.add(textFieldSearch);
+		textFieldID.setBounds(326, 98, 151, 22);
+		contentPane.add(textFieldID);
 		
 		textFieldPrice = new JTextField();
 		textFieldPrice.setColumns(10);
-		textFieldPrice.setBounds(330, 140, 151, 22);
+		textFieldPrice.setBounds(326, 133, 151, 22);
 		contentPane.add(textFieldPrice);
+		
+		textFieldPeriod = new JTextField();
+		textFieldPeriod.setColumns(10);
+		textFieldPeriod.setBounds(326, 168, 151, 22);
+		contentPane.add(textFieldPeriod);
 		
 		textFieldCustomer = new JTextField();
 		textFieldCustomer.setColumns(10);
-		textFieldCustomer.setBounds(330, 175, 151, 22);
+		textFieldCustomer.setBounds(326, 203, 151, 22);
 		contentPane.add(textFieldCustomer);
+		
+		JLabel lblResults = new JLabel("Results");
+		lblResults.setBounds(375, 75, 78, 16);
+		contentPane.add(lblResults);
+		
+		JLabel lblNewLabel_1 = new JLabel("Number ID");
+		lblNewLabel_1.setBounds(217, 101, 97, 16);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblPrice = new JLabel("Price");
+		lblPrice.setBounds(217, 136, 97, 16);
+		contentPane.add(lblPrice);
+		
+		JLabel lblPeriodOfTime = new JLabel("Period of time");
+		lblPeriodOfTime.setBounds(217, 171, 97, 16);
+		contentPane.add(lblPeriodOfTime);
+		
+		JLabel lblCustomer = new JLabel("Customer");
+		lblCustomer.setBounds(217, 206, 97, 16);
+		contentPane.add(lblCustomer);
 		
 		btnSearch = new JButton("Search");
 		
-		btnSearch.setBounds(31, 124, 97, 25);
+		btnSearch.setBounds(31, 132, 97, 25);
 		contentPane.add(btnSearch);
 		
-		JLabel lblNumberId = new JLabel("Number ID");
-		lblNumberId.setBounds(217, 108, 70, 16);
-		contentPane.add(lblNumberId);
+		textFieldStatus = new JTextField();
+		textFieldStatus.setColumns(10);
+		textFieldStatus.setBounds(326, 236, 151, 22);
+		contentPane.add(textFieldStatus);
 		
-		JLabel lblPrice = new JLabel("Price");
-		lblPrice.setBounds(217, 143, 70, 16);
-		contentPane.add(lblPrice);
-		
-		JLabel lblCustomer = new JLabel("Customer");
-		lblCustomer.setBounds(217, 178, 70, 16);
-		contentPane.add(lblCustomer);
-		
-		JLabel lblResults = new JLabel("Results");
-		lblResults.setBounds(376, 69, 56, 16);
-		contentPane.add(lblResults);
-		
-		JList list = new JList();
-		list.setBounds(158, 257, -80, -37);
-		contentPane.add(list);
+		lblStatus = new JLabel("Status");
+		lblStatus.setBounds(217, 239, 97, 16);
+		contentPane.add(lblStatus);
 	}
 
 	private void createEvents() {
-		
+		// TODO Auto-generated method stub
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SaleMenu saleMenu = new SaleMenu();
+				LeasingMenu leasingMenu = new LeasingMenu();
 				dispose();
-				saleMenu.main(null);
+				leasingMenu.main(null);
 			}
 		});
 		
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SaleControl saleControl = new SaleControl();
+				LoanControl loanControl = new LoanControl();
 				String idNum = textFieldSearch.getText();
-				ArrayList<String> readResult = saleControl.readSale(idNum);
+				ArrayList<String> readResult = loanControl.readLoan(idNum);
 				
 				if(readResult != null) {
 					textFieldID.setText(readResult.get(0).substring(12));
 					textFieldPrice.setText(readResult.get(1).substring(9));
 					textFieldCustomer.setText(readResult.get(2).substring(12) + " -CPR");
+					textFieldPeriod.setText(readResult.get(3).substring(2) + " " + readResult.get(4).substring(2));
+					textFieldStatus.setText(readResult.get(5).substring(10));
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Sorry, there is no such sale!");
 				}
-				
 			}
 		});
 	}

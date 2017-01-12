@@ -140,8 +140,8 @@ public class SaleMenu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit the program?");
 				if(confirm == JOptionPane.YES_OPTION) {
-					Brexit brexit = new Brexit();
-					brexit.exit();
+					//Brexit brexit = new Brexit();
+					LoginMenu.brexit.exit();
 					System.exit(0);
 				}
 			}

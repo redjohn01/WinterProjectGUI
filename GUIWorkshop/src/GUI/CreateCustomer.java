@@ -138,44 +138,30 @@ public class CreateCustomer extends JFrame {
 		
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					CustomerControl customerControler = new CustomerControl();
-					String cpr = textField.getText();
-					String name = textField_1.getText();
-					String address = textField_2.getText();
-					String email = textField_3.getText();
-					String phone = textField_4.getText();
-					String city = textField_5.getText();
-					
-					/*InputChecker.verifyId(1);
-					InputChecker.verifyName();
-					InputChecker.verifyAddress();
-					InputChecker.verifyEmail();
-					InputChecker.verifyPhone();
-					InputChecker.verifyCity();*/
-					if((cpr.equals("") || name.equals("") || address.equals("") || email.equals("") || phone.equals("") || city.equals("")) ) {
-						JOptionPane.showMessageDialog(null, "You need to fill out all the fields!");
-					}
-					else {
-						if(customerControler.createCustomer(cpr, name, address, email, phone, city)) {
-							JOptionPane.showMessageDialog(null, "Operation finished with success.");
-							textField.setText("");
-							textField_1.setText("");
-							textField_2.setText("");
-							textField_3.setText("");
-							textField_4.setText("");
-							textField_5.setText("");
+				CustomerControl customerControler = new CustomerControl();
+				String cpr = textField.getText();
+				String name = textField_1.getText();
+				String address = textField_2.getText();
+				String email = textField_3.getText();
+				String phone = textField_4.getText();
+				String city = textField_5.getText();
 
-						}
-						else {
-							JOptionPane.showMessageDialog(null, "Operation failed.");
-						}
-					}
-					//customerControler.createCustomer(cpr, name, address, email, phone, city);
-										
-				} catch(Exception ex) {
-					JOptionPane.showMessageDialog(null, "Operation failed.");
+				if(customerControler.createCustomer(InputChecker.verifyId(1, cpr), InputChecker.verifyName(name), InputChecker.verifyAddress(address), 
+						InputChecker.verifyEmail(email), InputChecker.verifyPhone(phone), InputChecker.verifyCity(city))) {
+					JOptionPane.showMessageDialog(null, "Operation finished with success.");
+					textField.setText("");
+					textField_1.setText("");
+					textField_2.setText("");
+					textField_3.setText("");
+					textField_4.setText("");
+					textField_5.setText("");
 				}
+//				try {
+//					
+//										
+//				} catch(Exception ex) {
+//					JOptionPane.showMessageDialog(null, "Operation failed.");
+//				}
 			}
 		});
 	}
