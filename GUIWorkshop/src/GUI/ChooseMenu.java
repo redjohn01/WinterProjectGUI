@@ -133,6 +133,14 @@ public class ChooseMenu extends JFrame {
 			}
 		});
 		
+		btEmployee.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EmployeeMenu employeeMenu = new EmployeeMenu();
+				dispose();
+				employeeMenu.main(null);
+			}
+		});
+		
 		btSale.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SaleMenu saleMenu = new SaleMenu();

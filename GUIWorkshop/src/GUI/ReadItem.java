@@ -176,13 +176,14 @@ public class ReadItem extends JFrame {
 				
 				if(result != null) {
 					textField.setText(result.get(0).substring(9));
+					int sizeOfField = result.get(0).substring(9).length();
 					textField_1.setText(result.get(1).substring(9));
 					textField_2.setText(result.get(2).substring(12));
 					textField_3.setText(result.get(3).substring(15) + " DKK");
 					textField_4.setText(result.get(4).substring(20) + " DKK");
 					textField_5.setText(result.get(5).substring(17) + " DKK");
-					textField_6.setText(result.get(6).substring(29));
-					textField_7.setText(result.get(7).substring(32));
+					textField_6.setText(result.get(6).substring(24+sizeOfField));
+					textField_7.setText(result.get(7).substring(27+sizeOfField));
 				}
 				else {
                 	JOptionPane.showMessageDialog(null, "Sorry, there is no such item!");

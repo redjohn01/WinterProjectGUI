@@ -64,7 +64,7 @@ public class Item {
         this.costPrice = costPrice;
         this.tradeAllowance = tradeAllowance;
         this.retailPrice = retailPrice;
-        if (place.equals("DIY")) this.quantityAtDIY += quantity;
+        if (place.equals("diy")) this.quantityAtDIY += quantity;
         else this.quantityAtTimber += quantity;
     }
 

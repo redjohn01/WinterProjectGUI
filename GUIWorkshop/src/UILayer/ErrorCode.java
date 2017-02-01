@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import GUI.ChooseMenu;
+
 /**
  * Created by RaidenRabit on 2016-11-25.
  */
