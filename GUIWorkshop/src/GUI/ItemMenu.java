@@ -4,11 +4,14 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 
 public class ItemMenu extends JFrame {
 
@@ -16,7 +19,10 @@ public class ItemMenu extends JFrame {
 	private JButton btnBack;
 	private JButton btnCreateItem;
 	private JButton btnReadItem;
-
+	private JButton btnDeleteItem;
+	private JButton btnEditItem;
+	private JButton btnPreviousMenu;
+	private JButton btnExitProgram;
 	/**
 	 * Launch the application.
 	 */
@@ -51,29 +57,26 @@ public class ItemMenu extends JFrame {
 		contentPane.setLayout(null);
 		
 		btnCreateItem = new JButton("Create Item");
-		
-		
 		btnCreateItem.setBounds(164, 58, 123, 36);
 		contentPane.add(btnCreateItem);
 		
 		btnReadItem = new JButton("Read Item");
-		
 		btnReadItem.setBounds(164, 107, 123, 36);
 		contentPane.add(btnReadItem);
 		
-		JButton btnEditItem = new JButton("Edit Item");
+		btnEditItem = new JButton("Edit Item");
 		btnEditItem.setBounds(164, 156, 123, 36);
 		contentPane.add(btnEditItem);
 		
-		JButton btnDeleteItem = new JButton("Delete Item");
+		btnDeleteItem = new JButton("Delete Item");
 		btnDeleteItem.setBounds(164, 205, 123, 36);
 		contentPane.add(btnDeleteItem);
 		
-		JButton btnPreviousMenu = new JButton("Previous Menu");
+		btnPreviousMenu = new JButton("Previous Menu");
 		btnPreviousMenu.setBounds(164, 254, 123, 36);
 		contentPane.add(btnPreviousMenu);
 		
-		JButton btnExitProgram = new JButton("Exit Program");
+		btnExitProgram = new JButton("Exit Program");
 		btnExitProgram.setBounds(164, 303, 123, 36);
 		contentPane.add(btnExitProgram);
 		
@@ -108,5 +111,40 @@ public class ItemMenu extends JFrame {
 				readItem.main(null);
 			}
 		});
+		btnDeleteItem.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+			DeleteItem deleteItem = new DeleteItem();
+			dispose();
+			deleteItem.main(null);
+			}
+		});
+		btnEditItem.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+			EditItem editItem = new EditItem();
+			dispose();
+			editItem.main(null);
+			}
+		});
+		
+		btnPreviousMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ChooseMenu chMenu = new ChooseMenu();
+				dispose();
+				chMenu.main(null);
+			}
+		});
+		
+		btnExitProgram.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit the program?");
+				if(confirm == JOptionPane.YES_OPTION) {
+					//Brexit brexit = new Brexit();
+					LoginMenu.brexit.exit();
+					System.exit(0);
+				}
+			}
+		});
+		
 	}
+
 }
