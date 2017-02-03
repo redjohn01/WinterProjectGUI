@@ -231,27 +231,34 @@ public class EditItem extends JFrame {
 		
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int fieldChoice = Integer.parseInt(textFieldChoice.getText());
-				Object object = textFieldObject.getText();
+				int fieldChoice = 0;
+				try {
+					fieldChoice = Integer.parseInt(textFieldChoice.getText());
+					Object object = textFieldObject.getText();
+					
+					try{
+						itemControl.changeItemFieldByBarcode(search, fieldChoice, object); 	
+						JOptionPane.showMessageDialog(null, "Successfuly saved!");
+						textFieldSearch.setText("");
+						textField.setText("");
+						textField_1.setText("");
+						textField_2.setText("");
+						textField_3.setText("");
+						textField_4.setText("");
+						textField_5.setText("");
+						textField_6.setText("");
+						textField_7.setText("");
+						textFieldChoice.setText("");
+						textFieldObject.setText("");
+					}
+					catch(Exception ex) {
+						JOptionPane.showMessageDialog(null, "Error, please try again!");
+					}
+				} catch(Exception ex) {
+					JOptionPane.showMessageDialog(null, "Empty fields not allowed!");
+				}
 				
-				try{
-					itemControl.changeItemFieldByBarcode(search, fieldChoice, object); 	
-					JOptionPane.showMessageDialog(null, "Successfuly saved!");
-					textFieldSearch.setText("");
-					textField.setText("");
-					textField_1.setText("");
-					textField_2.setText("");
-					textField_3.setText("");
-					textField_4.setText("");
-					textField_5.setText("");
-					textField_6.setText("");
-					textField_7.setText("");
-					textFieldChoice.setText("");
-					textFieldObject.setText("");
-				}
-				catch(Exception ex) {
-					JOptionPane.showMessageDialog(null, "Error, please try again!");
-				}
+				
 			}
 		});
 	}
