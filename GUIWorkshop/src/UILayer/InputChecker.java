@@ -36,9 +36,8 @@ public class InputChecker {
         return instance;
     }
 
-    public static String verifyId(int check, String input) {
+    public static boolean verifyId(int check, String input) {
         //id = null; // making sure it is empty before starting the process
-        do {
             //System.out.println("Please input user's CPR/CVR.");
             ok = true;
             //id = Input.readString();
@@ -63,18 +62,17 @@ public class InputChecker {
                 }
             }
 
-        } while (!ok);
 
         if (check == 1)
             existingIds.add(input); // adding the unique id to the system
 
 
-        return input;
+        return ok;
     }
 
-    public static String verifyName(String name) {
+    public static boolean verifyName(String name) {
         //name = null;    // making sure it is empty before starting the process
-        do {
+        
             //System.out.println("Please input the name.");
             ok = true;
             //name = Input.readString();
@@ -82,15 +80,13 @@ public class InputChecker {
                 ok = false;
                 ErrorCode.print(WRONG_NAME_INPUT);
             }
-        } while (!ok);
 
-        return name;
+        return ok;
     }
 
-    public static String verifyAddress(String address) {
+    public static boolean verifyAddress(String address) {
         //address = null; // making sure it is empty before starting the process
 
-        do {
             //System.out.println("Please input the address.");
             ok = true;
             //address = Input.readString();
@@ -99,13 +95,11 @@ public class InputChecker {
                 ok = false;
                 ErrorCode.print(WRONG_ADDRESS_INPUT);
             }
-        } while (!ok);
 
-        return address;
+        return ok;
     }
 
-    public static String verifyEmail(String email) {
-        do {
+    public static boolean verifyEmail(String email) {
             //System.out.println("Please input user's email.");
             //email = null; // making sure it is empty before starting the process
             ok = true;
@@ -115,15 +109,13 @@ public class InputChecker {
                 ok = false;
                 ErrorCode.print(WRONG_EMAIL_INPUT);
             }
-        } while (!ok);
 
-        return email;
+        return ok;
     }
 
-    public static String verifyPhone(String phone) {
+    public static boolean verifyPhone(String phone) {
         //phone = null; // making sure it is empty before starting the process
 
-        do {
             //System.out.println("Please input the phone number.");
             ok = true;
             //phone = Input.readString();
@@ -137,9 +129,8 @@ public class InputChecker {
                 ok = false;
                 ErrorCode.print(WRONG_PHONE_LENGTH_INPUT);
             }
-        } while (!ok);
 
-        return phone;
+        return ok;
     }
 
     public static int verifyFieldNumber(int index,int inputIndex) {
@@ -158,10 +149,9 @@ public class InputChecker {
         return inputIndex;
     }
 
-    public static String verifyCity(String city) {
+    public static boolean verifyCity(String city) {
         //city = null; // making sure it is empty before starting the process
 
-        do {
             //System.out.println("Please input the city.");
             ok = true;
             //city = Input.readString();
@@ -169,9 +159,8 @@ public class InputChecker {
                 ok = false;
                 ErrorCode.print(WRONG_CITY_INPUT);
             }
-        } while (!ok);
 
-        return city;
+        return ok;
     }
 
     public static String verifyWorkId(int check, String workId) {
