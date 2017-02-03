@@ -175,28 +175,22 @@ public class EditSale extends JFrame {
 		
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int fieldChoice = Integer.parseInt(textFieldChoice.getText());
+				Object object = textFieldObject.getText();
 				
 				try{
-					int fieldChoice = Integer.parseInt(textFieldChoice.getText());
-					Object object = textFieldObject.getText();
-					
-					try{
-						saleControl.updateSale(search, fieldChoice, object); 	
-						JOptionPane.showMessageDialog(null, "Successfuly saved!");
-						textFieldSearch.setText("");
-						textField.setText("");
-						textField_1.setText("");
-						textField_2.setText("");
-						textFieldChoice.setText("");
-						textFieldObject.setText("");
-					}
-					catch(Exception ex) {
-						JOptionPane.showMessageDialog(null, "Error, please try again!");
-					}
-				} catch(Exception ex) {
-					JOptionPane.showMessageDialog(null, "Empty fields not allowed!");
+					saleControl.updateSale(search, fieldChoice, object); 	
+					JOptionPane.showMessageDialog(null, "Successfuly saved!");
+					textFieldSearch.setText("");
+					textField.setText("");
+					textField_1.setText("");
+					textField_2.setText("");
+					textFieldChoice.setText("");
+					textFieldObject.setText("");
 				}
-				
+				catch(Exception ex) {
+					JOptionPane.showMessageDialog(null, "Error, please try again!");
+				}
 			}
 		});
 	}
