@@ -187,23 +187,31 @@ public class EditLeasing extends JFrame {
 		
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int fieldChoice = Integer.parseInt(textFieldChoose.getText());
-				Object object = textFieldObject.getText();
 				
 				try{
-					loanControl.updateLoan(search, fieldChoice, object); 	
-					JOptionPane.showMessageDialog(null, "Successfuly saved!");
-					textFieldSearch.setText("");
-					textFieldID.setText("");
-					textFieldPrice.setText("");
-					textFieldPeriod.setText("");
-					textFieldCustomer.setText("");
-					textFieldChoose.setText("");
-					textFieldObject.setText("");
+					int fieldChoice = Integer.parseInt(textFieldChoose.getText());
+					try{
+						Object object = textFieldObject.getText();
+						
+						loanControl.updateLoan(search, fieldChoice, object); 	
+						JOptionPane.showMessageDialog(null, "Successfuly saved!");
+						textFieldSearch.setText("");
+						textFieldID.setText("");
+						textFieldPrice.setText("");
+						textFieldPeriod.setText("");
+						textFieldCustomer.setText("");
+						textFieldChoose.setText("");
+						textFieldObject.setText("");
+					}
+					catch(Exception ex) {
+						JOptionPane.showMessageDialog(null, "Error, please try again!");
+					}
+				} catch(Exception ex) {
+					JOptionPane.showMessageDialog(null, "Empty fields not allowed!");
 				}
-				catch(Exception ex) {
-					JOptionPane.showMessageDialog(null, "Error, please try again!");
-				}
+				
+				
+				
 			}
 		});
 	}
